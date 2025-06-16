@@ -1,11 +1,12 @@
 import React from 'react'
-import Birthcompo from './Birthcompo'
+import Birthcompo from './Birthcompo.jsx'
 
-const page = ({useSearchParams}) => {
-  const searchParams = useSearchParams;
-  const name=searchParams.get('name')
+const page =async ({searchParams}) => {
+  const prm= await searchParams.name
+ 
   return (
-    <Birthcompo  name={name}/>
+   <> <Birthcompo  name={prm}/> </>
+ 
   )
 }
 
