@@ -24,3 +24,133 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+/* styles/memories.css */
+
+.memories-container {
+  perspective: 1000px;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30%;
+  background: linear-gradient(to top, #fff, transparent);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ring {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: rotateRing 20s linear infinite;
+}
+
+.img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center center;
+  transform-style: preserve-3d;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.main-image {
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  z-index: 3;
+}
+
+.reflection {
+  position: relative;
+  top: -10px;
+  transform: scaleY(-1);
+  opacity: 0.4;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.reflection::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), transparent);
+  pointer-events: none;
+}
+
+/* Place 10 images evenly in a circle */
+.img:nth-child(1) { transform: rotateY(0deg) translateZ(500px); }
+.img:nth-child(2) { transform: rotateY(36deg) translateZ(500px); }
+.img:nth-child(3) { transform: rotateY(72deg) translateZ(500px); }
+.img:nth-child(4) { transform: rotateY(108deg) translateZ(500px); }
+.img:nth-child(5) { transform: rotateY(144deg) translateZ(500px); }
+.img:nth-child(6) { transform: rotateY(180deg) translateZ(500px); }
+.img:nth-child(7) { transform: rotateY(216deg) translateZ(500px); }
+.img:nth-child(8) { transform: rotateY(252deg) translateZ(500px); }
+.img:nth-child(9) { transform: rotateY(288deg) translateZ(500px); }
+.img:nth-child(10) { transform: rotateY(324deg) translateZ(500px); }
+
+
+.center-text {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Pacifico', cursive;
+  font-size: 3rem;
+  color: #ff69b4;
+  text-align: center;
+  text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4, 0 0 30px #ff69b4;
+  pointer-events: none;
+  z-index: 10;
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow:
+      0 0 5px rgba(255, 133, 193, 0.4),
+      0 0 10px rgba(255, 133, 193, 0.3),
+      0 0 15px rgba(255, 133, 193, 0.2);
+  }
+  to {
+    text-shadow:
+      0 0 10px rgba(255, 133, 193, 1),
+      0 0 20px rgba(255, 133, 193, 0.8),
+      0 0 30px rgba(255, 133, 193, 0.6);
+  }
+}
+
+@keyframes rotateRing {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
