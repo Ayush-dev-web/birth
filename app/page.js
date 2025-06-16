@@ -54,7 +54,7 @@ export default function Home() {
             htmlFor="name"
             className="block text-gray-800 text-2xl font-bold mb-4 drop-shadow-sm"
           >
-            💌 What's your beautiful name?
+            💌 What&apos;s your beautiful name?
           </label>
           <input
             id="name"
